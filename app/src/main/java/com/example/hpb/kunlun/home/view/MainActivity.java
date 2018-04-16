@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.example.hpb.kunlun.BaseActivity;
 import com.example.hpb.kunlun.BasePresenter;
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rb_channel)
     RadioButton rbChannel;
     @BindView(R.id.main_content)
-    LinearLayout mainContent;
+    RelativeLayout mainContent;
 
     @Override
     public BasePresenter initPresenter() {

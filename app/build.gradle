@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.example.hpb.kunlun"
@@ -12,6 +12,11 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ['dart.henson.package': 'com.example.hpb.kunlun']
+            }
+        }
     }
     buildTypes {
         release {
@@ -30,16 +35,16 @@ repositories {
         url 'http://4thline.org/m2'
     }
 }
-apt {
-    arguments {
-        "dart.henson.package" "com.example.hpb.kunlun"
-    }
-}
+//annotationProcessor {
+//    arguments {
+//        "dart.henson.package" "com.example.hpb.kunlun"
+//    }
+//}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
 
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
@@ -49,9 +54,11 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 
     compile 'com.jakewharton:butterknife:8.0.1'
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.1'
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    compile 'io.realm:realm-gradle-plugin:5.0.0'
 
     //bottom nav
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.2'
@@ -63,7 +70,7 @@ dependencies {
     //Extra "injection"
     compile 'com.f2prateek.dart:dart:2.0.0'
     compile 'com.f2prateek.dart:henson:2.0.0'
-    apt 'com.f2prateek.dart:henson-processor:2.0.0'
+    annotationProcessor 'com.f2prateek.dart:henson-processor:2.0.0'
 
     //download
     compile 'com.liulishuo.filedownloader:library:0.3.2'
@@ -72,7 +79,7 @@ dependencies {
 
     compile 'fm.jiecao:jiecaovideoplayer:3.6.1'
     //upnp
-    compile  'org.fourthline.cling:cling-core:2.1.0'
+    compile 'org.fourthline.cling:cling-core:2.1.0'
     compile 'org.fourthline.cling:cling-support:2.1.0'
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version:'8.1.18.v20150929'
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version:'8.1.18.v20150929'

@@ -33,8 +33,10 @@ public class VmovierApplication extends Application {
                 });
 
 
-        //Realm init
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder(getApplicationContext()).build();
-        Realm.setDefaultConfiguration(realmConfig);
+        // Initialize Realm
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
+        Realm.setDefaultConfiguration(config);
+
     }
 }
