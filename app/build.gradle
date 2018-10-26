@@ -7,14 +7,14 @@ android {
 //    buildToolsVersion '26.0.2'
 
     defaultConfig {
-        applicationId "com.example.hpb.kunlun"
+        applicationId "com.mybacc.ssvip"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ['dart.henson.package': 'com.example.hpb.kunlun']
+                arguments = ['dart.henson.package': 'com.mybacc.ssvip']
             }
         }
     }
@@ -23,9 +23,47 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            ext.alwaysUpdateBuildId = false
+            ext.enableCrashlytics = false
+        }
     }
     packagingOptions {
         exclude 'META-INF/beans.xml'
+    }
+    flavorDimensions "stage", "mode"
+    productFlavors {
+        // When building a variant that uses this flavor, the following configurations
+        // override those in the defaultConfig block.
+        dev {
+            dimension "stage"
+            // To avoid using legacy multidex when building from the command line,
+            // set minSdkVersion to 21 or higher. When using Android Studio 2.3 or higher,
+            // the build automatically avoids legacy multidex when deploying to a device running
+            // API level 21 or higher—regardless of what you set as your minSdkVersion.
+            minSdkVersion 21
+            versionNameSuffix "-dev"
+            applicationIdSuffix '.dev'
+            resConfigs "en", "xxhdpi"
+        }
+
+        prod {
+            dimension "stage"
+            // If you've configured the defaultConfig block for the release version of
+            // your app, you can leave this block empty and Gradle uses configurations in
+            // the defaultConfig block instead. You still need to create this flavor.
+            // Otherwise, all variants use the "dev" flavor configurations.
+        }
+        demo {
+            dimension "mode"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full {
+            dimension "mode"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
     }
 }
 repositories {
@@ -37,7 +75,7 @@ repositories {
 }
 //annotationProcessor {
 //    arguments {
-//        "dart.henson.package" "com.example.hpb.kunlun"
+//        "dart.henson.package" "com.mybacc.ssvip"
 //    }
 //}
 dependencies {

@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.hpb.kunlun.View.AutoScrollViewPager
+    <com.mybacc.ssvip.View.AutoScrollViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
-        android:layout_height="180dp"></com.example.hpb.kunlun.View.AutoScrollViewPager>
+        android:layout_height="180dp"></com.mybacc.mybacc.ssvip.View.AutoScrollViewPager>
 </LinearLayout>
